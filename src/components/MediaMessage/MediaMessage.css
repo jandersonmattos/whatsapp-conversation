@@ -1,0 +1,113 @@
+.media-message > div {
+  display: inline-table !important;
+  padding: 0.05rem 0;
+}
+
+.media-message[data-direction='inbound'] > div {
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 10%) 2px 2px 2px;
+  position: relative;
+}
+
+.media-message[data-direction='outbound'] > div {
+  box-shadow: rgb(0 0 0 / 10%) 2px 2px 2px;
+}
+
+.media-message[data-direction='inbound'] > div::before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 6px solid transparent;
+  border-right: 6px solid white;
+  border-top: 6px solid white;
+  border-bottom: 6px solid transparent;
+  left: -8px;
+  top: 0;
+}
+
+.media-image {
+  max-width: 12rem;
+  max-height: 12rem;
+  display: block;
+}
+
+.media-message[data-direction='outbound'] .media-audio {
+  border-radius: 0.3rem;
+  background-color: #e0fbd6 !important;
+  padding: 0.25rem;
+}
+
+.media-message[data-direction='inbound'] .media-audio {
+  border-radius: 0 0.3rem 0.3rem 0.3rem;
+  background-color: #fff;
+  padding: 0.25rem;
+}
+
+.invalid-media {
+  background-color: white;
+  padding: 0.5rem;
+}
+
+.media-message[data-direction='outbound'] .invalid-media {
+  background-color: #e0fbd6;
+}
+
+.invalid-media .title {
+  font-size: 12px;
+}
+
+.invalid-media .description {
+  font-size: 10px;
+  color: #9d9d9d;
+}
+
+.media-card {
+  background: white;
+  border-radius: 4px;
+  min-width: 140px;
+  box-shadow: rgb(0 0 0 / 10%) 2px 2px 2px;
+}
+
+.media-card header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.media-card footer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.5rem;
+  color: rgb(33, 158, 87);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.media-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #fef3cd;
+  padding: 0.35rem 0.5rem;
+  font-size: 12px;
+}
+
+.custom-spinner {
+  min-width: 50px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-height: 720px) {
+  .media-image {
+    max-width: 10rem;
+    max-height: 10rem;
+  }
+}

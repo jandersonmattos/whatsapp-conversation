@@ -1,0 +1,9 @@
+.media-input__hidden {
+  display: none;
+}
+
+.media-input__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}

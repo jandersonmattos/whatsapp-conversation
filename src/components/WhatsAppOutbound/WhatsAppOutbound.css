@@ -1,0 +1,82 @@
+.whatsapp-outbound {
+  padding: 1rem;
+  min-height: 280px;
+}
+
+.outbound-loading {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.outbound-body .form-group {
+  margin-bottom: 1rem;
+}
+
+.outbound-body label {
+  display: block;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+  color: #444;
+}
+
+.outbound-body select,
+.outbound-body input {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #c9c9c9;
+  border-radius: 4px;
+}
+
+.grid-params-template {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.card header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.card header h3 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.card__body {
+  padding: 0.75rem;
+}
+
+.template-preview {
+  background: white;
+  box-shadow: rgb(0 0 0 / 10%) 2px 2px 2px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 0.3rem 0.3rem 0.3rem;
+  text-align: left;
+}
+
+.outbound-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  margin-top: 1rem;
+}
+
+@media (max-width: 600.98px) {
+  .grid-params-template {
+    grid-template-columns: 1fr;
+  }
+}

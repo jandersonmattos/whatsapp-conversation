@@ -1,0 +1,96 @@
+.advanced-picklist {
+  position: relative;
+}
+
+.advanced-picklist__label {
+  display: block;
+  font-size: 0.75rem;
+  color: #444;
+  margin-bottom: 0.25rem;
+}
+
+.advanced-picklist__combobox {
+  position: relative;
+}
+
+.advanced-picklist__control {
+  position: relative;
+}
+
+.advanced-picklist__input,
+.advanced-picklist__search {
+  width: 100%;
+  padding: 0.45rem 2rem 0.45rem 0.5rem;
+  border: 1px solid #c9c9c9;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  background: #fff;
+}
+
+.advanced-picklist__input:disabled {
+  background: #f3f3f3;
+  cursor: not-allowed;
+}
+
+.advanced-picklist__input {
+  cursor: pointer;
+}
+
+.advanced-picklist__icon {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #706e6b;
+  pointer-events: none;
+}
+
+.advanced-picklist__dropdown {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  max-height: 12rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #c9c9c9;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+}
+
+.advanced-picklist__option {
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.advanced-picklist__option:hover {
+  background: #f3f3f3;
+}
+
+.advanced-picklist__option--empty {
+  color: #706e6b;
+  cursor: default;
+}
+
+.advanced-picklist__option--empty:hover {
+  background: transparent;
+}
+
+.advanced-picklist__option-label {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.advanced-picklist__combobox--open .advanced-picklist__search {
+  border-color: #0176d3;
+  outline: none;
+  box-shadow: 0 0 0 1px #0176d3;
+}

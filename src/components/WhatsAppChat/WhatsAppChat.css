@@ -1,0 +1,265 @@
+.omni-chat-container {
+  background: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 80px);
+  min-height: 450px;
+  width: 100%;
+  max-width: 720px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+}
+
+.header {
+  width: 100%;
+  background-color: #f0f2f5;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 8px 10px;
+  flex-shrink: 0;
+}
+
+.omni-chat-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.user-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: orange;
+  color: white;
+}
+
+.name {
+  margin: 0 7px;
+  font-size: 15px;
+}
+
+.phone {
+  color: gray;
+  margin: 0 5px;
+  font-size: 10px;
+}
+
+.realtime-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.realtime-dot--live {
+  background: #06b148;
+  box-shadow: 0 0 0 2px rgb(6 177 72 / 25%);
+}
+
+.omni-chat-btn-container {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.reload-messages-btn {
+  color: gray;
+}
+
+.reload-messages-btn:hover {
+  color: #06b148;
+}
+
+.chat-panel {
+  background-color: #e5ddd5;
+  background-image: url('/images/chat-background.png');
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: top center;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  max-height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(0 0 0 / 25%) transparent;
+}
+
+.chat-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-panel::-webkit-scrollbar-thumb {
+  background-color: rgb(0 0 0 / 25%);
+  border-radius: 3px;
+}
+
+.chat-panel::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(0 0 0 / 40%);
+}
+
+.chat-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.load-more-container {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.chat-footer {
+  padding: 0.75rem;
+  flex-shrink: 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+.input-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.input-col {
+  flex: 1;
+  position: relative;
+}
+
+.message-input {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #c9c9c9;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+
+.send-button-div {
+  flex-shrink: 0;
+}
+
+.send-btn.enabled {
+  color: #fa6328;
+  cursor: pointer;
+}
+
+.send-btn.enabled:hover {
+  color: #c73800;
+}
+
+.send-btn.disabled {
+  color: #bbb;
+  cursor: default;
+  pointer-events: none;
+}
+
+.actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-send-template {
+  color: #e55015;
+  border-color: #e55015;
+}
+
+.btn-send-template--standalone {
+  margin-top: 0.5rem;
+}
+
+.warning-banner {
+  display: flex;
+  gap: 0.5rem;
+  background: #fef3cd;
+  border: 1px solid #f0e0a0;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.warning-banner p {
+  margin: 0 0 0.35rem;
+}
+
+.image-paste-box {
+  margin-top: 0.25rem;
+}
+
+.image-thumb {
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.btn-remove-image {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.chat-loading {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.modal--template .modal__container {
+  max-width: 640px;
+  width: 95vw;
+}
+
+.modal--template .modal__header {
+  position: relative;
+  padding: 1rem 2.5rem 1rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.modal--template .modal__header h1 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.modal__close {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+}
+
+@media (max-width: 600.98px) {
+  .btn-send-template:not(.btn-send-template--standalone) {
+    display: none;
+  }
+}

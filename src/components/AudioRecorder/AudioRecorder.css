@@ -1,0 +1,23 @@
+.rec-button-container {
+  position: relative;
+}
+
+.rec-button-container label {
+  position: absolute;
+  left: 4px;
+  bottom: -15px;
+  color: #c73800;
+  font-size: 11px;
+}
+
+.rec-button--stop {
+  color: #fa6328;
+}
+
+.rec-button:not(.rec-button--stop):hover {
+  color: #06b148;
+}
+
+.rec-button--stop:hover {
+  color: #c73800;
+}
