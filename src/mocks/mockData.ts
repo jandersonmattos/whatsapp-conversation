@@ -13,7 +13,7 @@ export const mockConversation: Omit<Conversation, 'currentUserId' | 'isOwner'> =
   phone: '+5511999887766',
   loftPhone: '+551140000000',
   read: false,
-  customerName: 'Maria Silva',
+  customerName: 'Chuck Norris',
   ownerId: MOCK_CURRENT_USER_ID,
 };
 
@@ -22,7 +22,7 @@ const hoursAgo = (hours: number) =>
 
 const conversationScript: { direction: 'inbound' | 'outbound'; body: string }[] = [
   { direction: 'inbound', body: 'Olá, preciso de ajuda com meu contrato.' },
-  { direction: 'outbound', body: 'Olá Maria! Claro, em que posso ajudar?' },
+  { direction: 'outbound', body: 'Olá Chuck! Claro, em que posso ajudar?' },
   { direction: 'inbound', body: 'Gostaria de saber o valor da próxima parcela.' },
   { direction: 'outbound', body: 'Vou verificar para você. Um momento, por favor.' },
   {
@@ -82,7 +82,7 @@ const conversationScript: { direction: 'inbound' | 'outbound'; body: string }[] 
   { direction: 'inbound', body: 'Maravilha, muito obrigada pelo atendimento!' },
   {
     direction: 'outbound',
-    body: 'Por nada, Maria! Qualquer dúvida estamos à disposição. Tenha um ótimo dia!',
+    body: 'Por nada, Chuck! Qualquer dúvida estamos à disposição. Tenha um ótimo dia!',
   },
   { direction: 'inbound', body: 'Obrigada!' },
 ];

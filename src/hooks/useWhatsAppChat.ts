@@ -36,6 +36,9 @@ export function useWhatsAppChat({
   const [realtimeConnected, setRealtimeConnected] = useState(false);
   const chatRef = useRef<HTMLElement | null>(null);
   const canSendMessageRef = useRef(false);
+  const realtimeConnectedRef = useRef(false);
+
+  realtimeConnectedRef.current = realtimeConnected;
 
   const pusherChannel = useMemo(() => {
     if (!conversation?.phone || !conversation?.loftPhone) return null;
@@ -155,7 +158,7 @@ export function useWhatsAppChat({
       setSendingMessage(true);
       try {
         const ok = await chatApi.sendTextMessage(threadId, trimmed);
-        if (ok) {
+        if (ok && !realtimeConnectedRef.current) {
           appendMessage({
             twilioId: String(Date.now()),
             direction: 'outbound',

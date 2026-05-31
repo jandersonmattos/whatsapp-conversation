@@ -58,10 +58,10 @@ export const chatApi = {
         return true;
       });
     }
-    return apiRequest<boolean>(`/threads/${threadId}/messages/text`, {
+    return apiRequest<{ ok: boolean }>(`/threads/${threadId}/messages/text`, {
       method: 'POST',
       body: JSON.stringify({ message }),
-    });
+    }).then((r) => r.ok);
   },
 
   sendMediaMessage(threadId: string, mediaUrl: string): Promise<void> {
