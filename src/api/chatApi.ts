@@ -142,7 +142,7 @@ export const chatApi = {
   ): Promise<Record<string, TemplateVariable>> {
     if (USE_MOCK_DATA) {
       return delay(300).then(() => ({
-        '{{1}}': { fieldValue: 'Maria', fieldLabel: 'Nome do cliente' },
+        '{{1}}': { fieldValue: 'Chuck', fieldLabel: 'Nome do cliente' },
         '{{2}}': { fieldValue: '#12345', fieldLabel: 'Número do caso' },
       }));
     }
