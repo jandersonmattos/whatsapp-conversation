@@ -203,7 +203,7 @@ export function WhatsAppChat({
                   onPaste={handlePaste}
                   maxLength={1500}
                   placeholder="Digite aqui sua mensagem (Pressione enter para enviar a mensagem)"
-                  rows={3}
+                  rows={2}
                 />
                 {pastedImage && (
                   <>

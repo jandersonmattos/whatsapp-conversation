@@ -19,6 +19,11 @@ function App() {
     setAuthToken(embed.authToken);
   }, []);
 
+  useEffect(() => {
+    const isEmbedded = window.self !== window.top;
+    document.documentElement.classList.toggle('embedded', isEmbedded);
+  }, []);
+
   return (
     <EmbedProvider
       value={{

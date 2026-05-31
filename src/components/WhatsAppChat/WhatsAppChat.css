@@ -10,6 +10,15 @@
   box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
 }
 
+html.embedded .omni-chat-container {
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  max-width: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 .header {
   width: 100%;
   background-color: #f0f2f5;
@@ -129,6 +138,24 @@
   padding: 0.75rem;
   flex-shrink: 0;
   border-top: 1px solid #e5e5e5;
+}
+
+html.embedded .chat-footer {
+  padding: 0.5rem;
+}
+
+html.embedded .input-row {
+  margin-bottom: 0.5rem;
+}
+
+html.embedded .message-input {
+  min-height: 2.5rem;
+  max-height: 4.5rem;
+}
+
+html.embedded .header {
+  border-radius: 0;
+  padding: 6px 8px;
 }
 
 .input-row {
