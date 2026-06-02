@@ -81,3 +81,4 @@ Eventos:
 4. Publique mensagem inbound/outbound no simulador → aparece na hora no chat
 
 Para desligar tempo real: `VITE_REALTIME_ENABLED=false`
+# Force rebuild
