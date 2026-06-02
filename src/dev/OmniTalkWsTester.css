@@ -1,0 +1,176 @@
+.omnitalk-tester {
+  min-height: 100vh;
+  padding: 1.5rem;
+  background: #f0f2f5;
+  color: #181818;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.omnitalk-tester__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.omnitalk-tester__header h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+}
+
+.omnitalk-tester__header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.omnitalk-tester__link {
+  font-size: 0.875rem;
+  color: #e55015;
+  text-decoration: none;
+}
+
+.omnitalk-tester__link:hover {
+  text-decoration: underline;
+}
+
+.omnitalk-tester__panel {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.omnitalk-tester__panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.omnitalk-tester__panel label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.omnitalk-tester__panel input {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.omnitalk-tester__hint {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0 0 0.75rem;
+}
+
+.omnitalk-tester__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.omnitalk-tester__btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.omnitalk-tester__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.omnitalk-tester__btn--primary {
+  background: #e55015;
+  border-color: #e55015;
+  color: #fff;
+}
+
+.omnitalk-tester__btn--primary:hover:not(:disabled) {
+  background: #c73800;
+}
+
+.omnitalk-tester__status {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+}
+
+.omnitalk-tester__status--on {
+  color: #06b148;
+}
+
+.omnitalk-tester__status--on::before {
+  content: '● ';
+}
+
+.omnitalk-tester__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .omnitalk-tester__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.omnitalk-tester__log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  font-size: 0.8rem;
+  font-family: ui-monospace, monospace;
+}
+
+.omnitalk-tester__log li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.omnitalk-tester__log-empty {
+  color: #888;
+  font-family: inherit;
+}
+
+.omnitalk-tester__log-item--inbound {
+  color: #0a6b2e;
+}
+
+.omnitalk-tester__log-item--error {
+  color: #c73800;
+}
+
+.omnitalk-tester__log time {
+  color: #888;
+  margin-right: 0.5rem;
+}
+
+.omnitalk-tester__json {
+  margin: 0;
+  padding: 0.75rem;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  max-height: 320px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
