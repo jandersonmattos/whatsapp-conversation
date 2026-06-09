@@ -8,3 +8,9 @@ export function buildPusherChannel(customerPhone: string, loftPhone: string): st
 
 export const PUSHER_EVENT_INBOUND = 'message-inbound-received';
 export const PUSHER_EVENT_OUTBOUND = 'message-outbound-received';
+
+export function buildOmniTalkChannel(ownerId: string): string {
+  return `omnitalk-notifications-${ownerId}`;
+}
+
+export const OMNITALK_EVENT_INBOUND = 'case-message-inbound-received';
