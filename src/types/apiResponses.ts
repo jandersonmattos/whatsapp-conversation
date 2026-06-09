@@ -22,16 +22,8 @@ export interface TwilioMessageApi {
   to: string;
   messaging_service_sid?: string;
   num_segments: string;
-  subresource_uris?: {
-    media: string;
-  };
 }
 
-export interface TwilioMessagesApiResponse {
-  first_page_uri: string;
-  next_page_uri: string | null;
-  page: number;
-  page_size: number;
-  uri: string;
+export interface MessagesApiResponse {
   messages: TwilioMessageApi[];
 }

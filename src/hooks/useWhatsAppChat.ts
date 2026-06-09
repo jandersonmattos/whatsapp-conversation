@@ -17,6 +17,7 @@ interface UseWhatsAppChatOptions {
   currentUserId: string;
   authToken?: string;
   realtimeEnabled?: boolean;
+  caseClosed?: boolean;
 }
 
 export function useWhatsAppChat({
@@ -24,6 +25,7 @@ export function useWhatsAppChat({
   currentUserId,
   authToken: _authToken,
   realtimeEnabled,
+  caseClosed = false,
 }: UseWhatsAppChatOptions) {
   const [conversation, setConversation] = useState<Conversation | null>(null);
   const [allMessages, setAllMessages] = useState<ChatMessage[] | null>(null);
@@ -153,7 +155,7 @@ export function useWhatsAppChat({
   const sendTextMessage = useCallback(
     async (text: string) => {
       const trimmed = text.trim();
-      if (!trimmed || sendingMessage) return false;
+      if (!trimmed || sendingMessage || caseClosed) return false;
 
       setSendingMessage(true);
       try {
@@ -177,7 +179,7 @@ export function useWhatsAppChat({
         scrollToBottom();
       }
     },
-    [threadId, sendingMessage, appendMessage, scrollToBottom],
+    [threadId, sendingMessage, caseClosed, appendMessage, scrollToBottom],
   );
 
   const scrollTop = useCallback(() => {

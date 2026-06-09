@@ -9,9 +9,14 @@ const MIME_TYPE = 'audio/ogg';
 interface AudioRecorderProps {
   threadId: string;
   onReloadMessages?: () => void;
+  disabled?: boolean;
 }
 
-export function AudioRecorder({ threadId, onReloadMessages }: AudioRecorderProps) {
+export function AudioRecorder({
+  threadId,
+  onReloadMessages,
+  disabled,
+}: AudioRecorderProps) {
   const [isRecording, setIsRecording] = useState(false);
   const [timePassed, setTimePassed] = useState<number | null>(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -87,6 +92,7 @@ export function AudioRecorder({ threadId, onReloadMessages }: AudioRecorderProps
   }, []);
 
   const toggleRecording = () => {
+    if (disabled) return;
     if (isRecording) {
       stopRecording();
     } else {
@@ -164,6 +170,7 @@ export function AudioRecorder({ threadId, onReloadMessages }: AudioRecorderProps
           type="button"
           className={`icon-btn rec-button ${isRecording ? 'rec-button--stop' : ''}`}
           onClick={toggleRecording}
+          disabled={disabled}
           title={isRecording ? 'Parar gravação' : 'Gravar áudio'}
           aria-label={isRecording ? 'Parar gravação' : 'Gravar áudio'}
         >

@@ -2,6 +2,8 @@ export interface EmbedConfig {
   threadId: string;
   currentUserId: string;
   authToken?: string;
+  /** Salesforce Case status from URL embed (e.g. Closed) */
+  caseStatus?: string;
 }
 
 declare global {

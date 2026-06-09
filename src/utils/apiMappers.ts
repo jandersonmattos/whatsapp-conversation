@@ -44,8 +44,6 @@ export function mapTwilioMessage(message: TwilioMessageApi): ChatMessage {
     status: mapTwilioStatus(message.status, message.direction),
     isMedia: numMedia > 0,
     body: message.body,
-    mediaResourceUrl:
-      numMedia > 0 ? message.subresource_uris?.media : undefined,
   };
 }
 

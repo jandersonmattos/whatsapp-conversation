@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { RefreshCw, Send, User, TriangleAlert, X } from 'lucide-react';
 import { useWhatsAppChat } from '../../hooks/useWhatsAppChat';
+import { useEmbedContext } from '../../context/EmbedContext';
 import { chatApi } from '../../api/chatApi';
 import { fileToBase64 } from '../../utils/messageUtils';
 import { Message } from '../Message/Message';
@@ -22,6 +23,9 @@ export function WhatsAppChat({
   authToken,
   realtimeEnabled,
 }: WhatsAppChatProps) {
+  const { caseStatus } = useEmbedContext();
+  const isCaseClosed = caseStatus === 'Closed';
+
   const {
     conversation,
     messages,
@@ -47,6 +51,7 @@ export function WhatsAppChat({
     currentUserId,
     authToken,
     realtimeEnabled,
+    caseClosed: isCaseClosed,
   });
 
   const [textMessage, setTextMessage] = useState('');
@@ -58,9 +63,12 @@ export function WhatsAppChat({
   } | null>(null);
 
   const isSendEnabled =
-    (textMessage.trim() && !sendingMessage) || (pastedImage && !sendingMedia);
+    !isCaseClosed &&
+    ((textMessage.trim() && !sendingMessage) || (pastedImage && !sendingMedia));
 
   const handleSend = useCallback(async () => {
+    if (isCaseClosed) return;
+
     if (textMessage.trim() && !sendingMessage) {
       const ok = await sendTextMessage(textMessage);
       if (ok) setTextMessage('');
@@ -87,6 +95,7 @@ export function WhatsAppChat({
       }
     }
   }, [
+    isCaseClosed,
     textMessage,
     sendingMessage,
     pastedImage,
@@ -100,6 +109,7 @@ export function WhatsAppChat({
   ]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (isCaseClosed) return;
     if (!e.shiftKey && e.key === 'Enter' && !sendingMessage) {
       e.preventDefault();
       handleSend();
@@ -107,6 +117,7 @@ export function WhatsAppChat({
   };
 
   const handlePaste = async (e: React.ClipboardEvent) => {
+    if (isCaseClosed) return;
     const items = e.clipboardData?.items;
     if (!items) return;
     for (const item of items) {
@@ -197,12 +208,16 @@ export function WhatsAppChat({
               <div className="input-col">
                 <textarea
                   className="message-input"
-                  disabled={sendingMessage}
+                  disabled={sendingMessage || isCaseClosed}
                   value={textMessage}
                   onChange={(e) => setTextMessage(e.target.value)}
                   onPaste={handlePaste}
                   maxLength={1500}
-                  placeholder="Digite aqui sua mensagem (Pressione enter para enviar a mensagem)"
+                  placeholder={
+                    isCaseClosed
+                      ? 'Envio de mensagens bloqueado — caso encerrado'
+                      : 'Digite aqui sua mensagem (Pressione enter para enviar a mensagem)'
+                  }
                   rows={2}
                 />
                 {pastedImage && (
@@ -241,12 +256,20 @@ export function WhatsAppChat({
                   <Send size={22} />
                 </button>
               </div>
-              <AudioRecorder threadId={threadId} onReloadMessages={loadMessages} />
+              <AudioRecorder
+                threadId={threadId}
+                onReloadMessages={loadMessages}
+                disabled={isCaseClosed}
+              />
             </div>
             {!sendingMessage && (
               <div className="actions-row">
-                <WhatsAppMediaInput threadId={threadId} onMediaSent={loadMessages} />
-                {conversationInProgress && (
+                <WhatsAppMediaInput
+                  threadId={threadId}
+                  onMediaSent={loadMessages}
+                  disabled={isCaseClosed}
+                />
+                {conversationInProgress && !isCaseClosed && (
                   <button
                     type="button"
                     className="btn btn-neutral btn-send-template"
@@ -256,6 +279,12 @@ export function WhatsAppChat({
                     Enviar template
                   </button>
                 )}
+              </div>
+            )}
+            {isCaseClosed && (
+              <div className="warning-banner warning-banner--inline" role="status">
+                <TriangleAlert size={16} />
+                <p>O caso está encerrado. Não é possível enviar novas mensagens, mídias ou templates.</p>
               </div>
             )}
           </>
@@ -293,7 +322,10 @@ export function WhatsAppChat({
           </div>
         )}
 
-        {userAllowedToSendMessage && shouldUseTemplates && conversationInProgress && (
+        {userAllowedToSendMessage &&
+          shouldUseTemplates &&
+          conversationInProgress &&
+          !isCaseClosed && (
           <button
             type="button"
             className="btn btn-neutral btn-send-template btn-send-template--standalone"

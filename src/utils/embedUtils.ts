@@ -32,5 +32,7 @@ export function resolveEmbedConfig(): EmbedConfig {
       params.get('currentUserId') ??
       '',
     authToken: fromWindow?.authToken ?? params.get('authToken') ?? undefined,
+    caseStatus:
+      fromWindow?.caseStatus ?? params.get('CaseStatus') ?? undefined,
   };
 }

@@ -229,6 +229,10 @@ html.embedded .header {
   margin: 0 0 0.35rem;
 }
 
+.warning-banner--inline {
+  margin-top: 0.5rem;
+}
+
 .image-paste-box {
   margin-top: 0.25rem;
 }

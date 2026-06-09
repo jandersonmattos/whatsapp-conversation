@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { REALTIME_ENABLED, REALTIME_WS_URL } from '../api/config';
-import { pusherSimulatorClient } from '../services/realtime/pusherSimulatorClient';
+import { pusherWebSocketClient } from '../services/realtime/pusherWebSocketClient';
 import type { ChatMessage } from '../types/message';
 import { mapInboundMessage } from '../utils/realtimeMappers';
 
@@ -26,7 +26,7 @@ export function usePusherRealtime({
       return;
     }
 
-    pusherSimulatorClient.subscribe({
+    pusherWebSocketClient.subscribe({
       channel,
       wsUrl: REALTIME_WS_URL,
       handlers: {
@@ -41,7 +41,7 @@ export function usePusherRealtime({
     });
 
     return () => {
-      pusherSimulatorClient.unsubscribe();
+      pusherWebSocketClient.unsubscribe();
     };
   }, [channel, enabled]);
 }

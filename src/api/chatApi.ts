@@ -6,7 +6,7 @@ import type { MediaData } from '../types/message';
 import type { TemplateVariable } from '../types/template';
 import type {
   ConversationApiResponse,
-  TwilioMessagesApiResponse,
+  MessagesApiResponse,
 } from '../types/apiResponses';
 import {
   mapConversationResponse,
@@ -39,7 +39,7 @@ export const chatApi = {
     if (USE_MOCK_DATA) {
       return delay(500).then(() => [...mockMessages]);
     }
-    return apiRequest<TwilioMessagesApiResponse>(`/threads/${threadId}/messages`).then(
+    return apiRequest<MessagesApiResponse>(`/threads/${threadId}/messages`).then(
       (response) => sortMessagesByTimestamp(response.messages.map(mapTwilioMessage)),
     );
   },
